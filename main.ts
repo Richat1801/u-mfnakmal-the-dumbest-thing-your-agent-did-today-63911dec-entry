@@ -107,6 +107,13 @@ function pick(): Candidate {
   return best;
 }
 
+for (let i = 0; i < BANK.length; i++) {
+  const chars = [...BANK[i].text].length;
+  if (chars < 1 || chars > 200) {
+    throw new Error(`candidate ${i} is ${chars} characters, outside the 1-200 gate`);
+  }
+}
+
 const winner = pick();
 const chars = [...winner.text].length;
 if (chars < 1 || chars > 200) {
